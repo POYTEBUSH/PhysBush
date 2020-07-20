@@ -2,16 +2,25 @@
 using UnityEngine;
 
 public class PhysicsObject : MonoBehaviour
-{
-    public float mass; // Mass of this object.
-
-    public Vector3 velocity; // The average velocity this fixed update.
+{    
+	[Header("Characteristics")]
+    [Tooltip("Mass [kg]")]
+    public float mass; // Mass of this object. kg	
+    [Tooltip("Current velocity [m/s]")]
+    public Vector3 velocity; // The average velocity this fixed update. m/s
 
     public ForceContainer forceContainer = new ForceContainer(); // All the forces currently applied to this object.
 
+	void Start()
+    {
+		SetupThrustTrailRenderer();
+		mass += GetComponent<RocketEngine>().fuelMass;
+    }
+
     void FixedUpdate()
     {
-        UpdateVelocity();
+        UpdateVelocity();		
+        UpdateThrustTrailRenderer();
 
         Vector3 deltaS = velocity * Time.deltaTime;
         transform.position += deltaS;
@@ -29,7 +38,7 @@ public class PhysicsObject : MonoBehaviour
 	private LineRenderer lineRenderer;
 	
 	// Use this for initialization
-	void Start () {
+	void SetupThrustTrailRenderer () {
 		lineRenderer = gameObject.AddComponent<LineRenderer>();
 		lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
 
@@ -42,7 +51,7 @@ public class PhysicsObject : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void UpdateThrustTrailRenderer () {
 		if (showTrails) {
 			lineRenderer.enabled = true;
 

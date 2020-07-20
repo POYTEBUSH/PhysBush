@@ -13,7 +13,7 @@ public class ForceContainer
     private readonly List<Force> m_Forces = new List<Force>();
 
     public ReadOnlyCollection<Force> Forces { get { return m_Forces.AsReadOnly(); } }
-    public Force NetForce { get; private set; } // The net force applied to this physics object.
+    public Force NetForce { get; private set; } // The net force applied to this physics object. N [kg m/s^2]
 
     public int NumOfForces()
     {
