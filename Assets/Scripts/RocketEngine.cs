@@ -30,10 +30,6 @@ public class RocketEngine : MonoBehaviour
 
             ExcertForce();
         }
-        else
-        {
-            Debug.LogWarning("Shit, we outta fuel ma boy!");
-        }
     }
 
     float FuelThisUpdate()
