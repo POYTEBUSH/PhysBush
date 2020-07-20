@@ -319,6 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee12d2afc7df315488228ce5b170ed3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &1458307186
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +332,7 @@ GameObject:
   - component: {fileID: 1458307188}
   - component: {fileID: 1458307187}
   - component: {fileID: 1458307190}
+  - component: {fileID: 1458307191}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -412,3 +414,20 @@ Skybox:
   m_GameObject: {fileID: 1458307186}
   m_Enabled: 1
   m_CustomSkybox: {fileID: 2100000, guid: 36ebb1f81aa054bd49704f3d17f62c4d, type: 2}
+--- !u!114 &1458307191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458307186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3e6294ced8cc044a8d990b99a483ec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1441278860}
+  distance: 10
+  speed: {x: 250, y: 120}
+  yminLimit: -20
+  ymaxLimit: 80
