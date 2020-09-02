@@ -10,6 +10,8 @@ public class PhysicsObject : MonoBehaviour
     [Tooltip("Current velocity [m/s]")]
     public Vector3 velocity; // The average velocity this fixed update. m/s
 
+	public float speed { get { return velocity.magnitude; }}
+
     public ForceContainer forceContainer = new ForceContainer(); // All the forces currently applied to this object.
 
 	private PhysicsObject[] physicsObjects;
