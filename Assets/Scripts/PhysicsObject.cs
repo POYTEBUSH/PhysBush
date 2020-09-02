@@ -39,7 +39,7 @@ public class PhysicsObject : MonoBehaviour
 
     private void UpdateVelocity()
     {
-		Debug.Log("Current Net force of " + name + ": " + forceContainer.NetForce);
+		//Debug.Log("Current Net force of " + name + ": " + forceContainer.NetForce);
         Vector3 acceleration = (forceContainer.NetForce / mass);
         velocity += (acceleration * Time.deltaTime);
     }
