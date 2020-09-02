@@ -14,8 +14,6 @@ public class PhysicsObject : MonoBehaviour
 
     public ForceContainer forceContainer = new ForceContainer(); // All the forces currently applied to this object.
 
-	private PhysicsObject[] physicsObjects;
-
 	void Start()
     {
 		SetupThrustTrailRenderer();
@@ -23,13 +21,10 @@ public class PhysicsObject : MonoBehaviour
 		{
 			mass += GetComponent<RocketEngine>().fuelMass; 
 		}
-
-		physicsObjects = FindObjectsOfType<PhysicsObject>();
     }
 
     void FixedUpdate()
     {
-		CalculateGravity();
         UpdateVelocity();
 		
         UpdateThrustTrailRenderer();
@@ -40,29 +35,7 @@ public class PhysicsObject : MonoBehaviour
         forceContainer.ClearForces();
     }
 
-    void CalculateGravity()
-    {
-        foreach (PhysicsObject physicsObjectA in physicsObjects)
-        {
-			foreach (PhysicsObject physicsObjectB in physicsObjects)
-			{
-				if ((physicsObjectA != physicsObjectB) && (physicsObjectA != this))
-                {
-					Debug.Log("Calulating the force applied to " + physicsObjectA.name + " relating to the gravity of " + physicsObjectB.name);
 
-					const float gravitationalConstant = 6.673e-11f; // [m^3 s^-2 kg^-1]
-
-					Vector3 offset = physicsObjectA.transform.position - physicsObjectB.transform.position;
-					float rSquared = Mathf.Pow(offset.magnitude, 2.0f);
-					float gravityMagnitude = (gravitationalConstant * ((physicsObjectA.mass * physicsObjectB.mass) / rSquared));
-
-					Vector3 graviationalForce = gravityMagnitude * offset.normalized;
-
-					physicsObjectA.forceContainer.AddForce(-graviationalForce);
-                }
-			}
-        }
-    }
 
     private void UpdateVelocity()
     {
