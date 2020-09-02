@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UniversalGravitation : MonoBehaviour
 {
+    [SerializeField]
 	private PhysicsObject[] physicsObjects;
     
     [Tooltip("Are there any dynamic physics objects or are all added on start.")]
@@ -32,7 +33,7 @@ public class UniversalGravitation : MonoBehaviour
 			{
 				if ((physicsObjectA != physicsObjectB) && (physicsObjectA != this))
                 {
-					Debug.Log("Calulating the force applied to " + physicsObjectA.name + " relating to the gravity of " + physicsObjectB.name);
+					Debug.Log("Calculating the force applied to " + physicsObjectA.name + " relating to the gravity of " + physicsObjectB.name);
 
 					const float gravitationalConstant = 6.673e-11f; // [m^3 s^-2 kg^-1]
 
